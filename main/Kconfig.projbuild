@@ -46,17 +46,23 @@ choice
     default EU
     help
         Select API endpoint URL.
+        EU: European Union(Austlia/Germany/India/UK)
+        US: North America(Canada/USA)
+        FE: Far East(Australia/Japan/Newzealand)
 
     config ALEXA_ENDPOINT_EU
         bool "EU"
     config ALEXA_ENDPOINT_US
         bool "US"
+    config ALEXA_ENDPOINT_FE
+        bool "FE"
 endchoice
 
 config ALEXA_ENDPOINT
     string
     default "https://avs-alexa-na.amazon.com" if ALEXA_ENDPOINT_US
     default "https://avs-alexa-eu.amazon.com" if ALEXA_ENDPOINT_EU
+    default "https://avs-alexa-fe.amazon.com" if ALEXA_ENDPOINT_FE
 
 
 choice
@@ -71,6 +77,18 @@ choice
         bool "en-GB"
     config ALEXA_LOCALE_DE_DE
         bool "de-DE"
+    config ALEXA_LOCALE_DE_AT
+        bool "de-AT"
+    config ALEXA_LOCALE_EN_CA
+        bool "en-CA"
+    config ALEXA_LOCALE_EN_IN
+        bool "en-IN"
+    config ALEXA_LOCALE_EN_NZ
+        bool "en-NZ"
+    config ALEXA_LOCALE_EN_AU
+        bool "en-AU"
+    config ALEXA_LOCALE_JA_JP
+        bool "ja-JP"
 endchoice
 
 config ALEXA_LOCALE
@@ -78,6 +96,12 @@ config ALEXA_LOCALE
     default "en-US" if ALEXA_LOCALE_EN_US
     default "en-GB" if ALEXA_LOCALE_EN_GB
     default "de-DE" if ALEXA_LOCALE_DE_DE
+    default "de-AT" if ALEXA_LOCALE_DE_AT
+    default "en-CA" if ALEXA_LOCALE_EN_CA
+    default "en-IN" if ALEXA_LOCALE_EN_IN
+    default "en-NZ" if ALEXA_LOCALE_EN_NZ
+    default "en-AU" if ALEXA_LOCALE_EN_AU
+    default "ja-JP" if ALEXA_LOCALE_JA_JP
 
 
 choice
