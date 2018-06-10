@@ -5,3 +5,5 @@
 /.project
 /sdkconfig
 /sdkconfig.old
+*.org
+*.bak
