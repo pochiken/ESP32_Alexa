@@ -104,6 +104,7 @@ static void http_get_task(void *pvParameters)
     callbacks.on_message_complete = on_message_complete_cb;
 
     // blocks until end of stream
+    vTaskDelay(500);
     int result = http_client_get(radio_conf->url, &callbacks,
             radio_conf->player_config);
 
