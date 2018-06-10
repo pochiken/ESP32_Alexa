@@ -44,7 +44,6 @@
 #define PRIO_CONNECT configMAX_PRIORITIES -1
 
 
-
 static void alexa_task(void *pvParameters)
 {
     alexa_init();
@@ -90,12 +89,14 @@ static void start_wifi()
 
 static renderer_config_t *create_renderer_config()
 {
+    double talk_speed_rate = atof(CONFIG_ALEXA_SPEECH_SPEED);
     renderer_config_t *renderer_config = calloc(1, sizeof(renderer_config_t));
 
     renderer_config->bit_depth = I2S_BITS_PER_SAMPLE_16BIT;
     renderer_config->i2s_num = I2S_NUM_0;
     renderer_config->sample_rate = 44100;
-    renderer_config->sample_rate_modifier = 0.5;
+    //renderer_config->sample_rate_modifier = 1.25;
+    renderer_config->sample_rate_modifier = talk_speed_rate;
     renderer_config->output_mode = AUDIO_OUTPUT_MODE;
 
     if(renderer_config->output_mode == I2S_MERUS) {
